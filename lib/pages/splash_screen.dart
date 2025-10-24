@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:store_keeper_app/pages/home_page.dart';
 import 'package:store_keeper_app/pages/product_page.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -20,7 +21,7 @@ class _SplashScreenState extends State<SplashScreen> {
     if (mounted) {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const ProductPage()),
+        MaterialPageRoute(builder: (context) => const HomePage()),
       );
     }
   }
@@ -29,7 +30,9 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(backgroundColor: Colors.transparent),
-      backgroundColor: const Color(0xFF0F1621), // Dark navy from your config
+      backgroundColor: Theme.of(
+        context,
+      ).colorScheme.surface, // Dark navy from your config
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
