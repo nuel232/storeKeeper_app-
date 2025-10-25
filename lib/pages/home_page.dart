@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:store_keeper_app/components/my_nav_bar.dart';
 import 'package:store_keeper_app/pages/add_product_page.dart';
 import 'package:store_keeper_app/pages/product_page.dart';
 
@@ -14,7 +15,7 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
 
   //this will update the index when the user taps on the navbar
-  void navigateButtonBar(int index) {
+  void navigateButtomBar(int index) {
     setState(() {
       _selectedIndex = index;
     });
@@ -29,6 +30,13 @@ class _HomePageState extends State<HomePage> {
   ];
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      bottomNavigationBar: MyNavBar(
+        onTabChange: (index) => navigateButtomBar(index),
+      ),
+      backgroundColor: Theme.of(context).colorScheme.surface,
+
+      body: _pages[_selectedIndex],
+    );
   }
 }
