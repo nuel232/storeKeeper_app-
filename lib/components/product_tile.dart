@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:popover/popover.dart';
 import 'package:store_keeper_app/components/settings.dart';
@@ -9,7 +10,8 @@ class ProductTile extends StatelessWidget {
   final String imagePath;
   final void Function()? onEditPressed;
   final void Function()? onDeletePressed;
-  ProductTile({
+
+  const ProductTile({
     super.key,
     required this.name,
     required this.onDeletePressed,
@@ -28,15 +30,33 @@ class ProductTile extends StatelessWidget {
       ),
       margin: EdgeInsets.only(top: 10, left: 25, right: 25),
       child: ListTile(
-        title: Text(name),
+        leading: imagePath.isNotEmpty
+            ? ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: Image.file(
+                  File(imagePath),
+                  width: 50,
+                  height: 50,
+                  fit: BoxFit.cover,
+                ),
+              )
+            : Container(
+                width: 50,
+                height: 50,
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.secondary,
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Icon(Icons.image),
+              ),
+        title: Text(name, style: TextStyle(fontWeight: FontWeight.bold)),
         subtitle: Row(
           children: [
-            Text(quantity.toString()),
+            Text('Qty: ${quantity.toInt()}'),
             SizedBox(width: 20),
-            Text(price.toString()),
+            Text('\$${price.toStringAsFixed(2)}'),
           ],
         ),
-
         trailing: Builder(
           builder: (context) => IconButton(
             icon: Icon(Icons.more_vert),

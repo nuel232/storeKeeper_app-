@@ -7,7 +7,6 @@ import 'package:store_keeper_app/services/theme/dark_mode.dart';
 void main() async {
   //initialize hive database
   WidgetsFlutterBinding.ensureInitialized();
-  await ProductDatabase.initialize;
 
   runApp(
     ChangeNotifierProvider(

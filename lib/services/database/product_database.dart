@@ -1,93 +1,66 @@
 import 'package:flutter/material.dart';
-import 'package:hive_flutter/adapters.dart';
 import 'package:store_keeper_app/model/product.dart';
+import 'package:store_keeper_app/services/database/databae_helper.dart';
 
 class ProductDatabase extends ChangeNotifier {
-  static late Box<Product> _productBox;
-  List<Product> get currentProducts => _productBox.values.toList();
+  List<Product> _currentProducts = [];
+  List<Product> get currentProducts => _currentProducts;
 
-  //initialize Hive Box and open the product Box
-  static Future<void> initialize() async {
-    await Hive.initFlutter();
-    Hive.registerAdapter(ProductAdapter());
-    _productBox = await Hive.openBox<Product>('product');
+  // Load products
+  Future<void> loadProducts() async {
+    _currentProducts = await DatabaseHelper.instance.readAllProducts();
+
+    // Add initial data if empty
+    if (_currentProducts.isEmpty) {
+      await _addInitialData();
+      _currentProducts = await DatabaseHelper.instance.readAllProducts();
+    }
+
+    notifyListeners();
   }
 
-  //create initial products
-  //run if it is the first time
-  void initialData() {
-    List<Product> initalProducts = [
+  Future<void> _addInitialData() async {
+    final products = [
       Product(
         name: 'Jordan 1',
         quantity: 2,
         price: 400,
-        imagePath: 'assets/Air-deldon.png',
+        imagePath: 'assets/dashboard_page.png',
       ),
       Product(
-        name: 'Jordan 1',
-        quantity: 2,
-        price: 400,
-        imagePath: 'assets/Air-deldon.png',
+        name: 'Jordan 2',
+        quantity: 3,
+        price: 450,
+        imagePath: 'assets/Tatum-3-tie-dye2.png',
       ),
       Product(
-        name: 'Jordan 1',
-        quantity: 2,
-        price: 400,
-        imagePath: 'assets/Air-deldon.png',
-      ),
-      Product(
-        name: 'Jordan 1',
-        quantity: 2,
-        price: 400,
-        imagePath: 'assets/Air-deldon.png',
-      ),
-      Product(
-        name: 'Jordan 1',
-        quantity: 2,
-        price: 400,
-        imagePath: 'assets/Air-deldon.png',
+        name: 'Jordan 3',
+        quantity: 1,
+        price: 500,
+        imagePath: 'assets/Zoom-freek-4.jpg',
       ),
     ];
-  }
 
-  //create
-  void addProduct(Product newProduct) async {
-    await _productBox.add(newProduct);
-    notifyListeners();
-  }
-
-  //read
-  void loadProduct() {
-    // If box is empty, it's the first time - add initial data
-    if (_productBox.isEmpty) {
-      initialData();
-    }
-    // Notify listeners so UI rebuilds with products
-    notifyListeners();
-  }
-
-  //update
-  void updateProduct(
-    int index,
-    String newName,
-    double newPrice,
-    double newQuantity,
-    String newImagePath,
-  ) async {
-    final product = _productBox.getAt(index);
-    if (product != null) {
-      product.name = newName;
-      product.price = newPrice;
-      product.quantity = newQuantity;
-      product.imagePath = newImagePath;
-      await _productBox.putAt(index, product);
-      notifyListeners();
+    for (var product in products) {
+      await DatabaseHelper.instance.createProduct(product);
     }
   }
 
-  // Delete a product
-  void deleteProduct(int index) async {
-    await _productBox.deleteAt(index);
-    notifyListeners();
+  // CREATE
+  Future<void> addProduct(Product product) async {
+    await DatabaseHelper.instance.createProduct(product);
+    await loadProducts();
+  }
+
+  // UPDATE
+  Future<void> updateProduct(Product product) async {
+    await DatabaseHelper.instance.updateProduct(product);
+    await loadProducts();
+  }
+
+  // DELETE
+  Future<void> deleteProduct(int id) async {
+    await DatabaseHelper.instance.deleteProduct(id);
+    await loadProducts();
   }
 }

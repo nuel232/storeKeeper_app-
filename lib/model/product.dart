@@ -1,26 +1,37 @@
-import 'package:hive_flutter/adapters.dart';
-
-part 'product.g.dart';
-
-@HiveType(typeId: 0)
 class Product {
-  @HiveField(0)
+  int? id;
   String name;
-
-  @HiveField(1)
   double quantity;
-
-  @HiveField(2)
   double price;
-
-  @HiveField(3)
   String imagePath;
 
   Product({
+    this.id,
     required this.name,
-
     required this.quantity,
     required this.price,
     required this.imagePath,
   });
+
+  // Convert to Map for SQLite
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'name': name,
+      'quantity': quantity,
+      'price': price,
+      'imagePath': imagePath,
+    };
+  }
+
+  // Create from Map
+  factory Product.fromMap(Map<String, dynamic> map) {
+    return Product(
+      id: map['id'],
+      name: map['name'],
+      quantity: map['quantity'],
+      price: map['price'],
+      imagePath: map['imagePath'],
+    );
+  }
 }
