@@ -25,7 +25,7 @@ class ProductDatabase extends ChangeNotifier {
         name: 'Jordan 1',
         quantity: 2,
         price: 400,
-        imagePath: 'assets/dashboard_page.png',
+        imagePath: 'assets/Air-deldon.png',
       ),
       Product(
         name: 'Jordan 2',
