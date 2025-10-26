@@ -17,8 +17,8 @@ class ProductAdapter extends TypeAdapter<Product> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return Product(
-      quantity: fields[1] as double,
       name: fields[0] as String,
+      quantity: fields[1] as double,
       price: fields[2] as double,
       imagePath: fields[3] as String,
     );

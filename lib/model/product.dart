@@ -5,20 +5,21 @@ part 'product.g.dart';
 @HiveType(typeId: 0)
 class Product {
   @HiveField(0)
-  final String name;
+  String name;
 
   @HiveField(1)
-  final double quantity;
+  double quantity;
 
   @HiveField(2)
-  final double price;
+  double price;
 
   @HiveField(3)
-  final String imagePath;
+  String imagePath;
 
   Product({
-    required this.quantity,
     required this.name,
+
+    required this.quantity,
     required this.price,
     required this.imagePath,
   });
