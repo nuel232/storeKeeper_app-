@@ -1,9 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:store_keeper_app/pages/splash_screen.dart';
+import 'package:store_keeper_app/services/database/product_database.dart';
 import 'package:store_keeper_app/services/theme/dark_mode.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  //initialize hive database
+  WidgetsFlutterBinding.ensureInitialized();
+  await ProductDatabase.initialize;
+
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => ProductDatabase(),
+      builder: (context, child) => const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

@@ -5,6 +5,19 @@ class ProductPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    final colorsScheme = Theme.of(context).colorScheme;
+    return Scaffold(
+      appBar: AppBar(backgroundColor: colorsScheme.surface),
+
+      body: Column(
+        children: [
+          //
+          Text(
+            'Products',
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+          ),
+        ],
+      ),
+    );
   }
 }
