@@ -88,7 +88,12 @@ class _ProductPageState extends State<ProductPage> {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: Text('Cancel'),
+            child: Text(
+              'Cancel',
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.onSecondary,
+              ),
+            ),
           ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
@@ -104,7 +109,12 @@ class _ProductPageState extends State<ProductPage> {
                 SnackBar(content: Text('Product updated successfully!')),
               );
             },
-            child: Text('Save Changes'),
+            child: Text(
+              'Save Changes',
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.onSecondary,
+              ),
+            ),
           ),
         ],
       ),
@@ -202,7 +212,14 @@ class _ProductPageState extends State<ProductPage> {
                         actions: [
                           TextButton(
                             onPressed: () => Navigator.pop(context),
-                            child: Text('Cancel'),
+                            child: Text(
+                              'Cancel',
+                              style: TextStyle(
+                                color: Theme.of(
+                                  context,
+                                ).colorScheme.onSecondary,
+                              ),
+                            ),
                           ),
                           TextButton(
                             onPressed: () {
@@ -210,7 +227,14 @@ class _ProductPageState extends State<ProductPage> {
                               Navigator.pop(context);
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
-                                  content: Text('${product.name} deleted'),
+                                  content: Text(
+                                    '${product.name} deleted',
+                                    style: TextStyle(
+                                      color: Theme.of(
+                                        context,
+                                      ).colorScheme.onSecondary,
+                                    ),
+                                  ),
                                   backgroundColor: Colors.red,
                                   duration: Duration(seconds: 2),
                                 ),
