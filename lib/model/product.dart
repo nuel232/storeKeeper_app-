@@ -24,7 +24,6 @@ class Product {
     };
   }
 
-  // Create from Map
   factory Product.fromMap(Map<String, dynamic> map) {
     return Product(
       id: map['id'],
