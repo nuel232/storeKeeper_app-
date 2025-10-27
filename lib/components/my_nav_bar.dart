@@ -21,8 +21,8 @@ class MyNavBar extends StatelessWidget {
         onTabChange: (value) => onTabChange!(value),
 
         tabs: [
-          GButton(icon: Icons.home, text: 'home'),
-          GButton(icon: Icons.add, text: 'Expenses'),
+          GButton(icon: Icons.inventory_2, text: 'Products'),
+          GButton(icon: Icons.add_circle_outline, text: 'Add New'),
         ],
       ),
     );
