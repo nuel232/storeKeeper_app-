@@ -18,16 +18,16 @@ A Flutter-based inventory management application that helps store owners manage 
 
 <table>
   <tr>
-    <td><img src="screenshots/products_list.png" width="200"/></td>
-    <td><img src="screenshots/add_product.png" width="200"/></td>
-    <td><img src="screenshots/edit_product.png" width="200"/></td>
-    <td><img src="screenshots/camera.png" width="200"/></td>
+    <td><img src="assets/products_list.png" width="200"/></td>
+    <td><img src="assets/add_product.png" width="200"/></td>
+    <td><img src="assets/edit_product.png" width="200"/></td>
+    <td><img src="assets/slash_screen.png" width="200"/></td>
   </tr>
   <tr>
     <td align="center">Products List</td>
     <td align="center">Add Product</td>
     <td align="center">Edit Product</td>
-    <td align="center">Camera Integration</td>
+    <td align="center">Splash Screen</td>
   </tr>
 </table>
 
