@@ -34,9 +34,9 @@ class Settings extends StatelessWidget {
         //delete option
         GestureDetector(
           onTap: () {
-            onDeleteTap!();
-
             Navigator.pop(context);
+
+            onDeleteTap!();
           },
           child: Container(
             height: 50,
@@ -45,7 +45,7 @@ class Settings extends StatelessWidget {
               child: Text(
                 'delete',
                 style: TextStyle(
-                  color: Theme.of(context).colorScheme.inversePrimary,
+                  color: Colors.red,
                   fontWeight: FontWeight.bold,
                 ),
               ),
