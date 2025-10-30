@@ -2,7 +2,7 @@
 
 A Flutter-based inventory management application that helps store owners manage their product inventory efficiently. Built with SQLite for local data persistence and native camera integration for product images.
 
-![App Banner](screenshots/banner.png)
+
 
 ## ✨ Features
 
