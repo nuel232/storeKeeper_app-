@@ -33,11 +33,11 @@ A Flutter-based inventory management application that helps store owners manage 
 
 ## 🎥 Demo Video
 
-Watch the full app walkthrough: [Demo Video Link](YOUR_GOOGLE_DRIVE_LINK)
+Watch the full app walkthrough: [Demo Video Link](https://drive.google.com/file/d/15DCY85PkOM1LLuMGZzLTWupBelFQo3NQ/view?usp=sharing)
 
 ## 📥 Download APK
 
-Download the latest release: [Storekeeper v1.0.0](YOUR_APK_LINK)
+Download the latest release: [Storekeeper v1.0.0](https://appetize.io/app/b_ec7gugls3gwvkw73fceipz5hfm)
 
 ## 🛠️ Tech Stack
 
